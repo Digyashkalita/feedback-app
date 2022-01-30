@@ -47,14 +47,14 @@ export const FeedbackProvider = ({ children }) => {
     const response = await fetch(`/feedback/${id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "applicatin/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(updItem),
     });
     const data = await response.json();
     console.log(data);
     setFeedback(
-      feedback.map((item) => (item.id === id ? { data, ...item } : item))
+      feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
     );
   };
 
